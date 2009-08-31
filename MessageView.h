@@ -2,7 +2,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface MessageView : NSCollectionView {
+@interface MessageView : NSCollectionViewItem {
 
 }
 

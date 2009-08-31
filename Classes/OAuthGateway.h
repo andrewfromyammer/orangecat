@@ -3,6 +3,7 @@
 
 }
 
++ (NSString *)baseURL;
 + (void)getRequestToken:(BOOL)createNewAccount;
 + (BOOL)getAccessToken:(NSString *)code;
 

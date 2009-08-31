@@ -55,18 +55,26 @@
   //[table setDataSource:[[FeedMessageList alloc] init]];
   
   NSView* view1 = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 500, 100)];
-  //NSImage* image = 
   NSImageView* imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 52, 48, 48)];
-  //NSImageCell* cell = [[NSImageCell alloc] initImageCell:[NSImage imageNamed:@"no_photo_small.png"]];
   [imageView setImage:[NSImage imageNamed:@"no_photo_small.png"]];
-  NSTextField* from = [[NSTextField alloc] initWithFrame:NSMakeRect(55, 52, 300, 30)];
+  NSTextField* from = [[NSTextField alloc] initWithFrame:NSMakeRect(55, 70, 300, 30)];
   [from setEditable:NO];
   [from setBordered:NO];
-  [from setStringValue:@"wefwefwefwefwe"];
+  [from setFont:[NSFont boldSystemFontOfSize:12]];
   [view1 addSubview:from];
-
-
   [view1 addSubview:imageView];
+
+  NSTextField* preview = [[NSTextField alloc] initWithFrame:NSMakeRect(55, 30, 300, 50)];
+  [preview setEditable:NO];
+  [preview setBordered:NO];
+  [view1 addSubview:preview];
+
+  NSTextField* time = [[NSTextField alloc] initWithFrame:NSMakeRect(55, 10, 300, 20)];
+  [time setEditable:NO];
+  [time setBordered:NO];
+  [time setTextColor:[NSColor lightGrayColor]];
+  [view1 addSubview:time];
+  
   
   [collection setMaxNumberOfColumns:1];
   [collection setMinItemSize:NSMakeSize(350, 100)];
@@ -76,9 +84,10 @@
   [NSThread detachNewThreadSelector:@selector(loadFeeds) toTarget:self withObject:nil];
 }
 
-- (void)test {
-  [arrayController insertObject: [NSDictionary dictionaryWithObjectsAndKeys:@"Jon", @"Name", @"Male", @"Gender",nil] atArrangedObjectIndex:0];  
-  [arrayController insertObject: [NSDictionary dictionaryWithObjectsAndKeys:@"Jon", @"Name", @"Male", @"Gender",nil] atArrangedObjectIndex:0];  
+- (void)test:(FeedMessageList*)data {
+  for (int i=[data.messages count]-1; i>=0; i--) {
+    [arrayController insertObject: [data.messages objectAtIndex:i] atArrangedObjectIndex:0];
+  }
 }
 
 - (void)loadFeeds {
@@ -89,15 +98,19 @@
   FeedMessageList* data = [[FeedMessageList alloc] init];
   
   [data processMessages:messages];
+
+  for (int i=0; i<[data.messages count]; i++) {
+    NSMutableDictionary* message = [data.messages objectAtIndex:i];
+    NSError* error;
+    NSLog([message objectForKey:@"actor_mugshot_url"]);
+    NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[message objectForKey:@"actor_mugshot_url"]] 
+                                         options:0 error:&error];
+    [message setObject:data forKey:@"image_data"];
+
+  }
   
-  
-  NSView* view1 = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 320, 100)];
-  NSButton* button1 = [[NSButton alloc] initWithFrame:NSMakeRect(0, 0, 100, 40)];
-  [button1 setTitle:@"2222222222"];
-  [view1 addSubview:button1];
-  
-  [self performSelectorOnMainThread:@selector(test)
-                         withObject:nil
+  [self performSelectorOnMainThread:@selector(test:)
+                         withObject:data
                       waitUntilDone:YES];
   
   //[table setDataSource:data];
