@@ -1,39 +1,24 @@
-//
-//  OAuthGateway.m
-//  Yammer
-//
-//  Created by aa on 1/28/09.
-//  Copyright 2009 Yammer, Inc. All rights reserved.
-//
 
 #import "OAuthCustom.h"
 #import "OAuthGateway.h"
 #import "LocalStorage.h"
 #import "OAConsumer.h"
 #import "OAMutableURLRequest.h"
-#import "YammerAppDelegate.h"
 
 static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
 
 @implementation OAuthGateway
 
 + (NSString *)baseURL {
-//  return @"http://192.168.1.151:3000";
   return @"https://staging.yammer.com";
-  
-  NSString *url = [LocalStorage getBaseURL];
-  if (url)
-    return url;
-
-  //return @"http://aa.com:3000";
-  return @"https://www.yammer.com";  
 }
 
+/*
 + (void)logout {
   [LocalStorage deleteAccountInfo];
   exit(0); 
 }
-
+*/
 
 + (void)getRequestToken:(BOOL)createNewAccount {
   
@@ -61,14 +46,13 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
   responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
   
   if (response == nil || responseData == nil || error != nil || [(NSHTTPURLResponse *)response statusCode] >= 400) {
-    [YammerAppDelegate showError:@"oauth getRequestToken" style:nil];
   } else {
     NSString *responseBody = [[NSString alloc] initWithData:responseData
                                                    encoding:NSUTF8StringEncoding];
 
     OAToken *requestToken = [[OAToken alloc] initWithHTTPResponseBody:responseBody];
-    [LocalStorage saveRequestToken:responseBody];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:
+    [LocalStorage saveFile:@"request_token" data:responseBody];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:
                                                 [NSString stringWithFormat:@"%@/oauth/authorize?oauth_token=%@&login=%@", 
                                                  [OAuthGateway baseURL], 
                                                  requestToken.key,
@@ -76,6 +60,8 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
                                                  ]]];
   }
 }
+
+/*
 
 + (BOOL)getAccessToken:(NSString *)launchURL {
   OAToken *requestToken = [[OAToken alloc] initWithHTTPResponseBody:[LocalStorage getRequestToken]];  
@@ -258,5 +244,6 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
   
   return responseData;
 }
+ */
 
 @end
