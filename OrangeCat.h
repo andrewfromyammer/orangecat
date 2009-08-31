@@ -3,9 +3,13 @@
 
 @interface OrangeCat : NSObject {
   IBOutlet NSWindow* window;
-  IBOutlet NSTextField* authCode;
+  NSTextField* authCode;
   IBOutlet id firstResponder;
-
+  IBOutlet NSScrollView* scroll;
+  IBOutlet NSTableView* table;
 }
+
+- (void)setupFeeds;
+- (IBAction)doLogout:(id)sender;
 
 @end

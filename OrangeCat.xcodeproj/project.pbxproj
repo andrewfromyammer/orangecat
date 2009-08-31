@@ -26,6 +26,7 @@
 		00C3BD21104B96B000F0607E /* OAToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C3BD11104B96B000F0607E /* OAToken.m */; };
 		00C3BD22104B96B000F0607E /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 00C3BD13104B96B000F0607E /* sha1.c */; };
 		00C3BD24104B96C700F0607E /* OAuthGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C3BD23104B96C700F0607E /* OAuthGateway.m */; };
+		00CDA3EB104BA1630037B616 /* FeedMessageList.m in Sources */ = {isa = PBXBuildFile; fileRef = 00CDA3EA104BA1630037B616 /* FeedMessageList.m */; };
 		00FE7D51104B901800A84516 /* OrangeCat.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FE7D50104B901800A84516 /* OrangeCat.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -76,6 +77,8 @@
 		00C3BD14104B96B000F0607E /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sha1.h; path = Classes/OAuth/sha1.h; sourceTree = "<group>"; };
 		00C3BD23104B96C700F0607E /* OAuthGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAuthGateway.m; path = Classes/OAuthGateway.m; sourceTree = "<group>"; };
 		00C3BD25104B96E900F0607E /* OAuthCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAuthCustom.h; path = Classes/OAuthCustom.h; sourceTree = "<group>"; };
+		00CDA3E9104BA1630037B616 /* FeedMessageList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedMessageList.h; sourceTree = "<group>"; };
+		00CDA3EA104BA1630037B616 /* FeedMessageList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedMessageList.m; sourceTree = "<group>"; };
 		00FE7D4F104B901800A84516 /* OrangeCat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrangeCat.h; sourceTree = "<group>"; };
 		00FE7D50104B901800A84516 /* OrangeCat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrangeCat.m; sourceTree = "<group>"; };
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -173,9 +176,19 @@
 			name = OAuth;
 			sourceTree = "<group>";
 		};
+		00CDA3E7104BA14A0037B616 /* OrangeCat */ = {
+			isa = PBXGroup;
+			children = (
+				00CDA3E9104BA1630037B616 /* FeedMessageList.h */,
+				00CDA3EA104BA1630037B616 /* FeedMessageList.m */,
+			);
+			name = OrangeCat;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				00CDA3E7104BA14A0037B616 /* OrangeCat */,
 				004F570A104B9A5D004770AA /* Networking */,
 				00C3BCC2104B93C400F0607E /* JSON */,
 				00C3BCB3104B926B00F0607E /* Util */,
@@ -327,6 +340,7 @@
 				00C3BD21104B96B000F0607E /* OAToken.m in Sources */,
 				00C3BD22104B96B000F0607E /* sha1.c in Sources */,
 				00C3BD24104B96C700F0607E /* OAuthGateway.m in Sources */,
+				00CDA3EB104BA1630037B616 /* FeedMessageList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
