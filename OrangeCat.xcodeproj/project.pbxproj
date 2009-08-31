@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00051401104BA3FE00E375E0 /* APIGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 00051400104BA3FE00E375E0 /* APIGateway.m */; };
+		00733D42104C1EE900FFDC16 /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00733D41104C1EE900FFDC16 /* MessageView.m */; };
 		00884108104BABE20079284F /* no_photo_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 00884107104BABE20079284F /* no_photo_small.png */; };
 		00C3BCB6104B927800F0607E /* LocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C3BCB5104B927800F0607E /* LocalStorage.m */; };
 		00C3BCCA104B93CF00F0607E /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C3BCC5104B93CF00F0607E /* NSObject+SBJSON.m */; };
@@ -40,6 +41,8 @@
 		000513FF104BA3FE00E375E0 /* APIGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIGateway.h; path = Classes/APIGateway.h; sourceTree = "<group>"; };
 		00051400104BA3FE00E375E0 /* APIGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIGateway.m; path = Classes/APIGateway.m; sourceTree = "<group>"; };
 		004F570B104B9A6D004770AA /* OAuthGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAuthGateway.h; path = Classes/OAuthGateway.h; sourceTree = "<group>"; };
+		00733D40104C1EE900FFDC16 /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
+		00733D41104C1EE900FFDC16 /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
 		00884107104BABE20079284F /* no_photo_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_photo_small.png; path = Images/no_photo_small.png; sourceTree = "<group>"; };
 		00C3BCB4104B927800F0607E /* LocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalStorage.h; path = Classes/LocalStorage.h; sourceTree = "<group>"; };
 		00C3BCB5104B927800F0607E /* LocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalStorage.m; path = Classes/LocalStorage.m; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 			children = (
 				00CDA3E9104BA1630037B616 /* FeedMessageList.h */,
 				00CDA3EA104BA1630037B616 /* FeedMessageList.m */,
+				00733D40104C1EE900FFDC16 /* MessageView.h */,
+				00733D41104C1EE900FFDC16 /* MessageView.m */,
 			);
 			name = OrangeCat;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 				00C3BD24104B96C700F0607E /* OAuthGateway.m in Sources */,
 				00CDA3EB104BA1630037B616 /* FeedMessageList.m in Sources */,
 				00051401104BA3FE00E375E0 /* APIGateway.m in Sources */,
+				00733D42104C1EE900FFDC16 /* MessageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
