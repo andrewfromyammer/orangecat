@@ -34,7 +34,7 @@
   return name;
 }
 
-- (void)processMessages:(NSMutableDictionary*)dict {
+- (NSArray *)processMessages:(NSMutableDictionary*)dict {
     
   NSMutableArray *references = [dict objectForKey:@"references"];
   
@@ -129,6 +129,7 @@
   }
   
   [messages addObjectsFromArray:tempMessages];
+  return tempMessages;
 }
 
 - (void)dealloc {

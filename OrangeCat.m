@@ -7,6 +7,8 @@
 
 @implementation OrangeCat
 
+@synthesize data, last;
+
 - (void)applicationDidFinishLaunching:(NSNotification*)notification {
   window.title = @"OrangeCat";
   [[NSFileManager defaultManager] createDirectoryAtPath:[LocalStorage localPath] attributes:nil];
@@ -77,16 +79,22 @@
   
   
   [collection setMaxNumberOfColumns:1];
-  [collection setMinItemSize:NSMakeSize(350, 100)];
+  [collection setMinItemSize:NSMakeSize(360, 100)];
   [collectionItem setView:view1];
   
   [window setContentView:scroll];
   [NSThread detachNewThreadSelector:@selector(loadFeeds) toTarget:self withObject:nil];
 }
 
-- (void)test:(FeedMessageList*)data {
+- (void)test {
   for (int i=[data.messages count]-1; i>=0; i--) {
     [arrayController insertObject: [data.messages objectAtIndex:i] atArrangedObjectIndex:0];
+  }
+}
+
+- (void)test2:(NSArray*)array {
+  for (int i=[array count]-1; i>=0; i--) {
+    [arrayController insertObject: [array objectAtIndex:i] atArrangedObjectIndex:0];
   }
 }
 
@@ -95,26 +103,55 @@
 //  NSCollectionView
   
   NSMutableDictionary* messages = [APIGateway messages:[OrangeCat getMyFeed] newerThan:nil style:nil];
-  FeedMessageList* data = [[FeedMessageList alloc] init];
+  self.data = [[FeedMessageList alloc] init];
   
   [data processMessages:messages];
 
+  NSMutableDictionary* message = [data.messages objectAtIndex:0];
+  self.last = [message objectForKey:@"id"];
+
   for (int i=0; i<[data.messages count]; i++) {
-    NSMutableDictionary* message = [data.messages objectAtIndex:i];
+    message = [data.messages objectAtIndex:i];
     NSError* error;
-    NSLog([message objectForKey:@"actor_mugshot_url"]);
-    NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[message objectForKey:@"actor_mugshot_url"]] 
+    NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[message objectForKey:@"actor_mugshot_url"]] 
                                          options:0 error:&error];
-    [message setObject:data forKey:@"image_data"];
+    [message setObject:imageData forKey:@"image_data"];
 
   }
   
-  [self performSelectorOnMainThread:@selector(test:)
-                         withObject:data
+  [self performSelectorOnMainThread:@selector(test)
+                         withObject:nil
                       waitUntilDone:YES];
   
-  //[table setDataSource:data];
-  //[table reloadData];
+  [NSThread detachNewThreadSelector:@selector(poll) toTarget:self withObject:nil];
+  [autoreleasepool release];
+}
+
+- (void)poll {
+  NSAutoreleasePool *autoreleasepool = [[NSAutoreleasePool alloc] init];
+  sleep(30);
+  
+  NSMutableDictionary* messages = [APIGateway messages:[OrangeCat getMyFeed] newerThan:self.last style:nil];
+
+  NSArray* newOnes = [data processMessages:messages];
+  
+  for (int i=0; i<[newOnes count]; i++) {
+    NSMutableDictionary* message = [newOnes objectAtIndex:i];
+    
+    if (i == 0)
+      self.last = [message objectForKey:@"id"];
+    
+    NSError* error;
+    NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[message objectForKey:@"actor_mugshot_url"]] 
+                                              options:0 error:&error];
+    [message setObject:imageData forKey:@"image_data"];
+  }
+  
+  [self performSelectorOnMainThread:@selector(test2:)
+                         withObject:newOnes
+                      waitUntilDone:YES];
+  
+  [NSThread detachNewThreadSelector:@selector(poll) toTarget:self withObject:nil];  
   [autoreleasepool release];
 }
 
