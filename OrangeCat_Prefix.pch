@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'OrangeCat' target in the 'OrangeCat' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
