@@ -3,6 +3,7 @@
 #import "LocalStorage.h"
 #import "OAuthGateway.h"
 #import "FeedMessageList.h"
+#import "APIGateway.h"
 
 @implementation OrangeCat
 
@@ -44,6 +45,31 @@
 - (void)setupFeeds {
   [table setDataSource:[[FeedMessageList alloc] init]];
   [window setContentView:scroll];  
+  [NSThread detachNewThreadSelector:@selector(loadFeeds) toTarget:self withObject:nil];
+}
+
+- (void)loadFeeds {
+  NSAutoreleasePool *autoreleasepool = [[NSAutoreleasePool alloc] init];
+  
+  NSMutableDictionary* messages = [APIGateway messages:[OrangeCat getMyFeed] newerThan:nil style:nil];
+  FeedMessageList* data = [[FeedMessageList alloc] init];
+  
+  [data processMessages:messages];
+  
+  [table setDataSource:data];
+  [table reloadData];
+  [autoreleasepool release];
+}
+
++ (NSMutableDictionary *)getMyFeed {
+  
+  NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+  [dic setObject:@"My Feed" forKey:@"name"];
+  [dic setObject:@"following" forKey:@"type"];
+  [dic setObject:@"/api/v1/messages/following" forKey:@"url"];
+  [dic setObject:@"(null)" forKey:@"group_id"];
+  
+  return dic;
 }
 
 - (IBAction)doLogout:(id)sender {

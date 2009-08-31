@@ -104,8 +104,6 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
   
 }
 
-/*
-
 + (NSURL *)fixRelativeURL:(NSString *)path {
   if (![path hasPrefix:@"http"])
     return [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [OAuthGateway baseURL], path]];
@@ -120,22 +118,22 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
   responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
   
   if ((response == nil || responseData == nil) && error == nil) {
-    [YammerAppDelegate showError:ERROR_OUT_OF_RANGE style:style];
+    //[YammerAppDelegate showError:ERROR_OUT_OF_RANGE style:style];
     return nil;
   } else if (error != nil) {
     if ([error code] == -1012) {
-      [LocalStorage deleteAccountInfo];
+      //[LocalStorage deleteAccountInfo];
       exit(1);
     }
     else
-      [YammerAppDelegate showError:ERROR_OUT_OF_RANGE style:style];
+      //[YammerAppDelegate showError:ERROR_OUT_OF_RANGE style:style];
     return nil;
   } else if ([response statusCode] >= 400) {
     NSString *detail = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     NSLog(detail);
     if ([detail length] > 30)
       detail = [detail substringToIndex:30];
-    [YammerAppDelegate showError:[NSString stringWithFormat:@"%d %@", [response statusCode], detail] style:style];
+    //[YammerAppDelegate showError:[NSString stringWithFormat:@"%d %@", [response statusCode], detail] style:style];
     return nil;
   }
   
@@ -148,7 +146,7 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
   OAConsumer *consumer = [[OAConsumer alloc] initWithKey:OAUTH_KEY
                                                   secret:OAUTH_SECRET];
   
-  OAToken *accessToken = [[OAToken alloc] initWithHTTPResponseBody:[LocalStorage getAccessToken]];
+  OAToken *accessToken = [[OAToken alloc] initWithHTTPResponseBody:[LocalStorage getFile:@"access_token"]];
   
   OAMutableURLRequest *request = [[OAMutableURLRequest alloc] initWithURL:url
                                                                  consumer:consumer
@@ -161,6 +159,7 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
   [request prepare];
   return [OAuthGateway handleConnection:request style:style];  
 }
+/*
 
 + (BOOL)httpGet200vsError:(NSString *)path {  
   NSURL *url = [OAuthGateway fixRelativeURL:path];

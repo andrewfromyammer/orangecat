@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00051401104BA3FE00E375E0 /* APIGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 00051400104BA3FE00E375E0 /* APIGateway.m */; };
 		00C3BCB6104B927800F0607E /* LocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C3BCB5104B927800F0607E /* LocalStorage.m */; };
 		00C3BCCA104B93CF00F0607E /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C3BCC5104B93CF00F0607E /* NSObject+SBJSON.m */; };
 		00C3BCCB104B93CF00F0607E /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C3BCC7104B93CF00F0607E /* NSString+SBJSON.m */; };
@@ -35,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		000513FF104BA3FE00E375E0 /* APIGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIGateway.h; path = Classes/APIGateway.h; sourceTree = "<group>"; };
+		00051400104BA3FE00E375E0 /* APIGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIGateway.m; path = Classes/APIGateway.m; sourceTree = "<group>"; };
 		004F570B104B9A6D004770AA /* OAuthGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAuthGateway.h; path = Classes/OAuthGateway.h; sourceTree = "<group>"; };
 		00C3BCB4104B927800F0607E /* LocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalStorage.h; path = Classes/LocalStorage.h; sourceTree = "<group>"; };
 		00C3BCB5104B927800F0607E /* LocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalStorage.m; path = Classes/LocalStorage.m; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 		00C3BCB3104B926B00F0607E /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				000513FF104BA3FE00E375E0 /* APIGateway.h */,
+				00051400104BA3FE00E375E0 /* APIGateway.m */,
 				00C3BCB4104B927800F0607E /* LocalStorage.h */,
 				00C3BCB5104B927800F0607E /* LocalStorage.m */,
 			);
@@ -341,6 +346,7 @@
 				00C3BD22104B96B000F0607E /* sha1.c in Sources */,
 				00C3BD24104B96C700F0607E /* OAuthGateway.m in Sources */,
 				00CDA3EB104BA1630037B616 /* FeedMessageList.m in Sources */,
+				00051401104BA3FE00E375E0 /* APIGateway.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

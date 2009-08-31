@@ -11,5 +11,6 @@
 
 - (void)setupFeeds;
 - (IBAction)doLogout:(id)sender;
++ (NSMutableDictionary *)getMyFeed;
 
 @end
