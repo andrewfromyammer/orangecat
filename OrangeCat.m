@@ -8,7 +8,7 @@
 @implementation OrangeCat
 
 - (void)applicationDidFinishLaunching:(NSNotification*)notification {
-  window.title = @"Orange Cat";
+  window.title = @"OrangeCat";
   [[NSFileManager defaultManager] createDirectoryAtPath:[LocalStorage localPath] attributes:nil];
   
   if ([LocalStorage getFile:@"request_token"]) {
