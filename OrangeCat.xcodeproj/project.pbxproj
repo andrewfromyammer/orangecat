@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00051401104BA3FE00E375E0 /* APIGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 00051400104BA3FE00E375E0 /* APIGateway.m */; };
+		00884108104BABE20079284F /* no_photo_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 00884107104BABE20079284F /* no_photo_small.png */; };
 		00C3BCB6104B927800F0607E /* LocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C3BCB5104B927800F0607E /* LocalStorage.m */; };
 		00C3BCCA104B93CF00F0607E /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C3BCC5104B93CF00F0607E /* NSObject+SBJSON.m */; };
 		00C3BCCB104B93CF00F0607E /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C3BCC7104B93CF00F0607E /* NSString+SBJSON.m */; };
@@ -39,6 +40,7 @@
 		000513FF104BA3FE00E375E0 /* APIGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIGateway.h; path = Classes/APIGateway.h; sourceTree = "<group>"; };
 		00051400104BA3FE00E375E0 /* APIGateway.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIGateway.m; path = Classes/APIGateway.m; sourceTree = "<group>"; };
 		004F570B104B9A6D004770AA /* OAuthGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAuthGateway.h; path = Classes/OAuthGateway.h; sourceTree = "<group>"; };
+		00884107104BABE20079284F /* no_photo_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_photo_small.png; path = Images/no_photo_small.png; sourceTree = "<group>"; };
 		00C3BCB4104B927800F0607E /* LocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalStorage.h; path = Classes/LocalStorage.h; sourceTree = "<group>"; };
 		00C3BCB5104B927800F0607E /* LocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalStorage.m; path = Classes/LocalStorage.m; sourceTree = "<group>"; };
 		00C3BCC3104B93CF00F0607E /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = Classes/JSON/JSON.h; sourceTree = "<group>"; };
@@ -117,6 +119,14 @@
 				00C3BD23104B96C700F0607E /* OAuthGateway.m */,
 			);
 			name = Networking;
+			sourceTree = "<group>";
+		};
+		00884106104BABD70079284F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				00884107104BABE20079284F /* no_photo_small.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		00C3BCB3104B926B00F0607E /* Util */ = {
@@ -253,6 +263,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				00884106104BABD70079284F /* Images */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -314,6 +325,7 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				00884108104BABE20079284F /* no_photo_small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 @property (nonatomic, retain) NSMutableArray* messages;
 
 
-- (void)processMessages:(NSMutableDictionary*)messageDictionary;
+- (void)processMessages:(NSMutableDictionary*)dict;
++ (NSString*)safeName:(NSMutableDictionary*)dict;
 
 @end
