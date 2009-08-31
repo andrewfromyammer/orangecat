@@ -34,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		004F570B104B9A6D004770AA /* OAuthGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAuthGateway.h; path = Classes/OAuthGateway.h; sourceTree = "<group>"; };
 		00C3BCB4104B927800F0607E /* LocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalStorage.h; path = Classes/LocalStorage.h; sourceTree = "<group>"; };
 		00C3BCB5104B927800F0607E /* LocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalStorage.m; path = Classes/LocalStorage.m; sourceTree = "<group>"; };
 		00C3BCC3104B93CF00F0607E /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = Classes/JSON/JSON.h; sourceTree = "<group>"; };
@@ -101,6 +102,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		004F570A104B9A5D004770AA /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				00C3BCF6104B969900F0607E /* OAuth */,
+				00C3BD25104B96E900F0607E /* OAuthCustom.h */,
+				004F570B104B9A6D004770AA /* OAuthGateway.h */,
+				00C3BD23104B96C700F0607E /* OAuthGateway.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
 		00C3BCB3104B926B00F0607E /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,16 +134,6 @@
 				00C3BCC9104B93CF00F0607E /* SBJSON.m */,
 			);
 			name = JSON;
-			sourceTree = "<group>";
-		};
-		00C3BCF5104B969300F0607E /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				00C3BD25104B96E900F0607E /* OAuthCustom.h */,
-				00C3BD23104B96C700F0607E /* OAuthGateway.m */,
-				00C3BCF6104B969900F0607E /* OAuth */,
-			);
-			name = Networking;
 			sourceTree = "<group>";
 		};
 		00C3BCF6104B969900F0607E /* OAuth */ = {
@@ -174,7 +176,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				00C3BCF5104B969300F0607E /* Networking */,
+				004F570A104B9A5D004770AA /* Networking */,
 				00C3BCC2104B93C400F0607E /* JSON */,
 				00C3BCB3104B926B00F0607E /* Util */,
 				00FE7D4F104B901800A84516 /* OrangeCat.h */,

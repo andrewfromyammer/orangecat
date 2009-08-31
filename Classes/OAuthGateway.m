@@ -61,10 +61,10 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
   }
 }
 
-/*
 
-+ (BOOL)getAccessToken:(NSString *)launchURL {
-  OAToken *requestToken = [[OAToken alloc] initWithHTTPResponseBody:[LocalStorage getRequestToken]];  
+
++ (BOOL)getAccessToken:(NSString *)code {
+  OAToken *requestToken = [[OAToken alloc] initWithHTTPResponseBody:[LocalStorage getFile:@"request_token"]];  
   OAConsumer *consumer = [[OAConsumer alloc] initWithKey:OAUTH_KEY
                                                   secret:OAUTH_SECRET];
   
@@ -79,25 +79,10 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
   [request setHTTPMethod:@"POST"];
   request.HTTPShouldHandleCookies = NO;
   
-  // yammer://verify?oauth_token=1111111111111&callback_token=AC45&more=true
-
-  NSRange range = [launchURL rangeOfString:@"?"];
-  NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-  if (range.location != NSNotFound) {
-    NSArray *parts = [[launchURL substringFromIndex:range.location+1] componentsSeparatedByString:@"&"];
-    int i=0;
-    for (i=0; i<[parts count]; i++) {
-      NSArray *key_value = [[parts objectAtIndex:i] componentsSeparatedByString:@"="];
-      if ([key_value count] == 2)
-        [dict setObject:[key_value objectAtIndex:1] forKey:[key_value objectAtIndex:0]];
-    }
-  }
-
   NSMutableArray *oauthParams = [NSMutableArray array];
-  [oauthParams addObject:[[OARequestParameter alloc] initWithName:@"callback_token" 
-                                                            value:[dict objectForKey:@"callback_token"]]];
+  [oauthParams addObject:[[OARequestParameter alloc] initWithName:@"callback_token" value:code]];
 	
-  [request setParameters:oauthParams];  	
+  [request setParameters:oauthParams];
   [request prepare];
 	
   NSURLResponse *response;
@@ -112,11 +97,14 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
     NSString *responseBody = [[NSString alloc] initWithData:responseData
                                                    encoding:NSUTF8StringEncoding];
     
-    [LocalStorage saveAccessToken:responseBody];
+    [LocalStorage removeFile:@"request_token"];
+    [LocalStorage saveFile:@"access_token" data:responseBody];
     return true;
   }  
   
 }
+
+/*
 
 + (NSURL *)fixRelativeURL:(NSString *)path {
   if (![path hasPrefix:@"http"])
