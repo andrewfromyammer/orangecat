@@ -53,10 +53,9 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
     OAToken *requestToken = [[OAToken alloc] initWithHTTPResponseBody:responseBody];
     [LocalStorage saveFile:@"request_token" data:responseBody];
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:
-                                                [NSString stringWithFormat:@"%@/oauth/authorize?oauth_token=%@&login=%@", 
+                                                [NSString stringWithFormat:@"%@/oauth/authorize?oauth_token=%@", 
                                                  [OAuthGateway baseURL], 
-                                                 requestToken.key,
-                                                 login
+                                                 requestToken.key
                                                  ]]];
   }
 }
