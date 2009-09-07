@@ -3,6 +3,8 @@
 #import "NSString+SBJSON.h"
 #import "LocalStorage.h"
 #import "NSString+SBJSON.h"
+#import "OAuthPostURLEncoded.h"
+#import "OAuthPostMultipart.h"
 
 @implementation APIGateway
 
@@ -42,6 +44,23 @@
     return (NSMutableDictionary *)[json JSONValue];
   
   return nil;
+}
+
++ (BOOL)createMessage:(NSString *)body repliedToId:(NSNumber *)repliedToId 
+              groupId:(NSNumber *)groupId
+            imageData:(NSData *)imageData {
+  NSMutableDictionary *params = [NSMutableDictionary dictionary];
+  
+  [params setObject:body forKey:@"body"];
+  if (repliedToId)
+    [params setObject:[repliedToId description] forKey:@"replied_to_id"];
+  if (groupId)
+    [params setObject:[groupId description] forKey:@"group_id"];
+  
+  if (imageData)
+    return [OAuthPostMultipart makeHTTPConnection:params path:@"/api/v1/messages" data:imageData];
+  else
+    return [OAuthPostURLEncoded makeHTTPConnection:params path:@"/api/v1/messages" method:@"POST"];
 }
 
 

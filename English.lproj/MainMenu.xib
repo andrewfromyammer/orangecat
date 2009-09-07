@@ -1342,7 +1342,7 @@
 			</object>
 			<object class="NSScrollView" id="216908869">
 				<nil key="NSNextResponder"/>
-				<int key="NSvFlags">286</int>
+				<int key="NSvFlags">268</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="NSClipView" id="351864458">

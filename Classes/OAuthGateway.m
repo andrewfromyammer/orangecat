@@ -10,7 +10,8 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
 @implementation OAuthGateway
 
 + (NSString *)baseURL {
-  return @"https://staging.yammer.com";
+    return @"http://localhost:3000";
+//  return @"https://staging.yammer.com";
 }
 
 /*
@@ -20,8 +21,7 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
 }
 */
 
-+ (void)getRequestToken:(BOOL)createNewAccount {
-  
++ (void)getRequestToken:(BOOL)createNewAccount {  
   OAConsumer *consumer = [[OAConsumer alloc] initWithKey:OAUTH_KEY
                                                   secret:OAUTH_SECRET];
   
@@ -46,6 +46,8 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
   responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
   
   if (response == nil || responseData == nil || error != nil || [(NSHTTPURLResponse *)response statusCode] >= 400) {
+    NSString *detail = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSLog(detail);
   } else {
     NSString *responseBody = [[NSString alloc] initWithData:responseData
                                                    encoding:NSUTF8StringEncoding];
@@ -57,6 +59,7 @@ static NSString *ERROR_OUT_OF_RANGE = @"Network out of range.";
                                                  [OAuthGateway baseURL], 
                                                  requestToken.key
                                                  ]]];
+
   }
 }
 

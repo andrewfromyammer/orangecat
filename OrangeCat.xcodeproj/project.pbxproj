@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		00051401104BA3FE00E375E0 /* APIGateway.m in Sources */ = {isa = PBXBuildFile; fileRef = 00051400104BA3FE00E375E0 /* APIGateway.m */; };
 		00733D42104C1EE900FFDC16 /* MessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00733D41104C1EE900FFDC16 /* MessageView.m */; };
+		00815F751054921300CCB0C1 /* OAuthPostMultipart.m in Sources */ = {isa = PBXBuildFile; fileRef = 00815F721054921300CCB0C1 /* OAuthPostMultipart.m */; };
+		00815F761054921300CCB0C1 /* OAuthPostURLEncoded.m in Sources */ = {isa = PBXBuildFile; fileRef = 00815F741054921300CCB0C1 /* OAuthPostURLEncoded.m */; };
 		00884108104BABE20079284F /* no_photo_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 00884107104BABE20079284F /* no_photo_small.png */; };
 		00C3BCB6104B927800F0607E /* LocalStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C3BCB5104B927800F0607E /* LocalStorage.m */; };
 		00C3BCCA104B93CF00F0607E /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C3BCC5104B93CF00F0607E /* NSObject+SBJSON.m */; };
@@ -44,6 +46,10 @@
 		004F570B104B9A6D004770AA /* OAuthGateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAuthGateway.h; path = Classes/OAuthGateway.h; sourceTree = "<group>"; };
 		00733D40104C1EE900FFDC16 /* MessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageView.h; sourceTree = "<group>"; };
 		00733D41104C1EE900FFDC16 /* MessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageView.m; sourceTree = "<group>"; };
+		00815F711054921300CCB0C1 /* OAuthPostMultipart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAuthPostMultipart.h; path = Classes/OAuthPostMultipart.h; sourceTree = "<group>"; };
+		00815F721054921300CCB0C1 /* OAuthPostMultipart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAuthPostMultipart.m; path = Classes/OAuthPostMultipart.m; sourceTree = "<group>"; };
+		00815F731054921300CCB0C1 /* OAuthPostURLEncoded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OAuthPostURLEncoded.h; path = Classes/OAuthPostURLEncoded.h; sourceTree = "<group>"; };
+		00815F741054921300CCB0C1 /* OAuthPostURLEncoded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OAuthPostURLEncoded.m; path = Classes/OAuthPostURLEncoded.m; sourceTree = "<group>"; };
 		00884107104BABE20079284F /* no_photo_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = no_photo_small.png; path = Images/no_photo_small.png; sourceTree = "<group>"; };
 		00C3BCB4104B927800F0607E /* LocalStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalStorage.h; path = Classes/LocalStorage.h; sourceTree = "<group>"; };
 		00C3BCB5104B927800F0607E /* LocalStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalStorage.m; path = Classes/LocalStorage.m; sourceTree = "<group>"; };
@@ -119,6 +125,10 @@
 		004F570A104B9A5D004770AA /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				00815F711054921300CCB0C1 /* OAuthPostMultipart.h */,
+				00815F721054921300CCB0C1 /* OAuthPostMultipart.m */,
+				00815F731054921300CCB0C1 /* OAuthPostURLEncoded.h */,
+				00815F741054921300CCB0C1 /* OAuthPostURLEncoded.m */,
 				00C3BCF6104B969900F0607E /* OAuth */,
 				00C3BD25104B96E900F0607E /* OAuthCustom.h */,
 				004F570B104B9A6D004770AA /* OAuthGateway.h */,
@@ -371,6 +381,8 @@
 				00051401104BA3FE00E375E0 /* APIGateway.m in Sources */,
 				00733D42104C1EE900FFDC16 /* MessageView.m in Sources */,
 				00F0BD5C104C433700B6BA4B /* NSDate-Ago.m in Sources */,
+				00815F751054921300CCB0C1 /* OAuthPostMultipart.m in Sources */,
+				00815F761054921300CCB0C1 /* OAuthPostURLEncoded.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

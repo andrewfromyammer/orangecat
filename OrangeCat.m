@@ -81,9 +81,32 @@
   [collection setMaxNumberOfColumns:1];
   [collection setMinItemSize:NSMakeSize(360, 100)];
   [collectionItem setView:view1];
+
+  NSView* view2 = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 400, 680)];
+  NSTextView* input = [[NSTextView alloc] initWithFrame:NSMakeRect(0, 580+40, 400, 60)];
+  [input setRichText:NO];
   
-  [window setContentView:scroll];
+  NSButton* updateButton = [[NSButton alloc] initWithFrame:NSRectFromCGRect(CGRectMake(150, 580, 100, 40))];
+  [updateButton setBezelStyle:NSTexturedRoundedBezelStyle];
+  [updateButton setTitle:@"Update"];
+  [updateButton setAction:@selector(doUpdate)];
+  
+  
+  scroll.frame = NSMakeRect(0, -1, 400, 580);
+  
+  [view2 addSubview:input];
+  [view2 addSubview:updateButton];
+  [view2 addSubview:scroll];
+  
+  [window setContentView:view2];
   [NSThread detachNewThreadSelector:@selector(loadFeeds) toTarget:self withObject:nil];
+}
+
+- (void)doUpdate {
+  if ([APIGateway createMessage:@"test" repliedToId:nil
+                        groupId:nil
+                      imageData:nil]) {
+  }    
 }
 
 - (void)test {
